@@ -24,7 +24,6 @@ message Release {
 
 service MutualExclusion {
     rpc RequestToken(Request) returns (stream Grant); 
-    rpc GrantToken(stream Grant) returns (stream Release);
     rpc AccesCritical(User) returns (Empty);
     rpc ReleaseToken(Release) returns (Empty);
 }

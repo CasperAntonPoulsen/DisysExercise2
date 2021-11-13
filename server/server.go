@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"log"
 	"net"
 	"time"
@@ -28,9 +27,8 @@ type Server struct {
 func (s *Server) RequestToken(rqst *pb.Request, stream pb.MutualExclusion_RequestTokenServer) error {
 
 	request := Request{user: rqst.User, stream: stream}
-	log.Printf("Request token recieved from: %v", rqst.User.Userid)
 
-	s.RequestQueue <- request
+	go func() { s.RequestQueue <- request }()
 
 	log.Printf("Request token added to queue from: %v", rqst.User.Userid)
 	return <-s.error
@@ -50,6 +48,7 @@ func (s *Server) AccesCritical(ctx context.Context, user *pb.User) (*pb.Empty, e
 }
 
 func GrantToken(rqst Request) error {
+	log.Printf("Granting token to: %v", rqst.user.Userid)
 	err := rqst.stream.Send(&pb.Grant{User: rqst.user})
 	return err
 }
@@ -73,18 +72,17 @@ func main() {
 	pb.RegisterMutualExclusionServer(grpcServer, &server)
 	go func() {
 		for {
-			fmt.Print("Checking requests \n")
+			log.Print("Checking requests \n")
 			rqst := <-server.RequestQueue
-
-			fmt.Print("Recieved request \n")
+			time.Sleep(2 * time.Second)
 			err := GrantToken(rqst)
 			if err != nil {
 				log.Fatalf("Failed to send grant token: %v", err)
 			}
-
+			time.Sleep(2 * time.Second)
 			release := <-server.Release
 			log.Printf("Release token recieved from: %v", release.User.Userid)
-
+			time.Sleep(2 * time.Second)
 		}
 	}()
 	grpcServer.Serve(listener)

@@ -67,7 +67,7 @@ func main() {
 	user := &pb.User{Userid: int32(*id)}
 
 	for {
-		time.Sleep(4 * time.Second)
+		time.Sleep(2 * time.Second)
 		requestToken(&pb.Request{User: user})
 
 	}

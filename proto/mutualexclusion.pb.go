@@ -266,20 +266,17 @@ var file_proto_mutualexclusion_proto_rawDesc = []byte{
 	0x73, 0x65, 0x72, 0x22, 0x2a, 0x0a, 0x07, 0x52, 0x65, 0x6c, 0x65, 0x61, 0x73, 0x65, 0x12, 0x1f,
 	0x0a, 0x04, 0x75, 0x73, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0b, 0x2e, 0x70,
 	0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x52, 0x04, 0x75, 0x73, 0x65, 0x72, 0x32,
-	0xc9, 0x01, 0x0a, 0x0f, 0x4d, 0x75, 0x74, 0x75, 0x61, 0x6c, 0x45, 0x78, 0x63, 0x6c, 0x75, 0x73,
+	0x9b, 0x01, 0x0a, 0x0f, 0x4d, 0x75, 0x74, 0x75, 0x61, 0x6c, 0x45, 0x78, 0x63, 0x6c, 0x75, 0x73,
 	0x69, 0x6f, 0x6e, 0x12, 0x2e, 0x0a, 0x0c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x54, 0x6f,
 	0x6b, 0x65, 0x6e, 0x12, 0x0e, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x52, 0x65, 0x71, 0x75,
 	0x65, 0x73, 0x74, 0x1a, 0x0c, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x47, 0x72, 0x61, 0x6e,
-	0x74, 0x30, 0x01, 0x12, 0x2c, 0x0a, 0x0a, 0x47, 0x72, 0x61, 0x6e, 0x74, 0x54, 0x6f, 0x6b, 0x65,
-	0x6e, 0x12, 0x0c, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x47, 0x72, 0x61, 0x6e, 0x74, 0x1a,
-	0x0e, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x52, 0x65, 0x6c, 0x65, 0x61, 0x73, 0x65, 0x30,
-	0x01, 0x12, 0x2a, 0x0a, 0x0d, 0x41, 0x63, 0x63, 0x65, 0x73, 0x43, 0x72, 0x69, 0x74, 0x69, 0x63,
-	0x61, 0x6c, 0x12, 0x0b, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x1a,
-	0x0c, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x12, 0x2c, 0x0a,
-	0x0c, 0x52, 0x65, 0x6c, 0x65, 0x61, 0x73, 0x65, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x12, 0x0e, 0x2e,
-	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x52, 0x65, 0x6c, 0x65, 0x61, 0x73, 0x65, 0x1a, 0x0c, 0x2e,
-	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x42, 0x08, 0x5a, 0x06, 0x2f,
-	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x74, 0x30, 0x01, 0x12, 0x2a, 0x0a, 0x0d, 0x41, 0x63, 0x63, 0x65, 0x73, 0x43, 0x72, 0x69, 0x74,
+	0x69, 0x63, 0x61, 0x6c, 0x12, 0x0b, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x55, 0x73, 0x65,
+	0x72, 0x1a, 0x0c, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x12,
+	0x2c, 0x0a, 0x0c, 0x52, 0x65, 0x6c, 0x65, 0x61, 0x73, 0x65, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x12,
+	0x0e, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x52, 0x65, 0x6c, 0x65, 0x61, 0x73, 0x65, 0x1a,
+	0x0c, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x42, 0x08, 0x5a,
+	0x06, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -307,15 +304,13 @@ var file_proto_mutualexclusion_proto_depIdxs = []int32{
 	0, // 1: proto.Grant.user:type_name -> proto.User
 	0, // 2: proto.Release.user:type_name -> proto.User
 	2, // 3: proto.MutualExclusion.RequestToken:input_type -> proto.Request
-	3, // 4: proto.MutualExclusion.GrantToken:input_type -> proto.Grant
-	0, // 5: proto.MutualExclusion.AccesCritical:input_type -> proto.User
-	4, // 6: proto.MutualExclusion.ReleaseToken:input_type -> proto.Release
-	3, // 7: proto.MutualExclusion.RequestToken:output_type -> proto.Grant
-	4, // 8: proto.MutualExclusion.GrantToken:output_type -> proto.Release
-	1, // 9: proto.MutualExclusion.AccesCritical:output_type -> proto.Empty
-	1, // 10: proto.MutualExclusion.ReleaseToken:output_type -> proto.Empty
-	7, // [7:11] is the sub-list for method output_type
-	3, // [3:7] is the sub-list for method input_type
+	0, // 4: proto.MutualExclusion.AccesCritical:input_type -> proto.User
+	4, // 5: proto.MutualExclusion.ReleaseToken:input_type -> proto.Release
+	3, // 6: proto.MutualExclusion.RequestToken:output_type -> proto.Grant
+	1, // 7: proto.MutualExclusion.AccesCritical:output_type -> proto.Empty
+	1, // 8: proto.MutualExclusion.ReleaseToken:output_type -> proto.Empty
+	6, // [6:9] is the sub-list for method output_type
+	3, // [3:6] is the sub-list for method input_type
 	3, // [3:3] is the sub-list for extension type_name
 	3, // [3:3] is the sub-list for extension extendee
 	0, // [0:3] is the sub-list for field type_name
@@ -421,7 +416,6 @@ const _ = grpc.SupportPackageIsVersion6
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type MutualExclusionClient interface {
 	RequestToken(ctx context.Context, in *Request, opts ...grpc.CallOption) (MutualExclusion_RequestTokenClient, error)
-	GrantToken(ctx context.Context, in *Grant, opts ...grpc.CallOption) (MutualExclusion_GrantTokenClient, error)
 	AccesCritical(ctx context.Context, in *User, opts ...grpc.CallOption) (*Empty, error)
 	ReleaseToken(ctx context.Context, in *Release, opts ...grpc.CallOption) (*Empty, error)
 }
@@ -466,38 +460,6 @@ func (x *mutualExclusionRequestTokenClient) Recv() (*Grant, error) {
 	return m, nil
 }
 
-func (c *mutualExclusionClient) GrantToken(ctx context.Context, in *Grant, opts ...grpc.CallOption) (MutualExclusion_GrantTokenClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_MutualExclusion_serviceDesc.Streams[1], "/proto.MutualExclusion/GrantToken", opts...)
-	if err != nil {
-		return nil, err
-	}
-	x := &mutualExclusionGrantTokenClient{stream}
-	if err := x.ClientStream.SendMsg(in); err != nil {
-		return nil, err
-	}
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
-	return x, nil
-}
-
-type MutualExclusion_GrantTokenClient interface {
-	Recv() (*Release, error)
-	grpc.ClientStream
-}
-
-type mutualExclusionGrantTokenClient struct {
-	grpc.ClientStream
-}
-
-func (x *mutualExclusionGrantTokenClient) Recv() (*Release, error) {
-	m := new(Release)
-	if err := x.ClientStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
-}
-
 func (c *mutualExclusionClient) AccesCritical(ctx context.Context, in *User, opts ...grpc.CallOption) (*Empty, error) {
 	out := new(Empty)
 	err := c.cc.Invoke(ctx, "/proto.MutualExclusion/AccesCritical", in, out, opts...)
@@ -519,7 +481,6 @@ func (c *mutualExclusionClient) ReleaseToken(ctx context.Context, in *Release, o
 // MutualExclusionServer is the server API for MutualExclusion service.
 type MutualExclusionServer interface {
 	RequestToken(*Request, MutualExclusion_RequestTokenServer) error
-	GrantToken(*Grant, MutualExclusion_GrantTokenServer) error
 	AccesCritical(context.Context, *User) (*Empty, error)
 	ReleaseToken(context.Context, *Release) (*Empty, error)
 }
@@ -530,9 +491,6 @@ type UnimplementedMutualExclusionServer struct {
 
 func (*UnimplementedMutualExclusionServer) RequestToken(*Request, MutualExclusion_RequestTokenServer) error {
 	return status.Errorf(codes.Unimplemented, "method RequestToken not implemented")
-}
-func (*UnimplementedMutualExclusionServer) GrantToken(*Grant, MutualExclusion_GrantTokenServer) error {
-	return status.Errorf(codes.Unimplemented, "method GrantToken not implemented")
 }
 func (*UnimplementedMutualExclusionServer) AccesCritical(context.Context, *User) (*Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AccesCritical not implemented")
@@ -563,27 +521,6 @@ type mutualExclusionRequestTokenServer struct {
 }
 
 func (x *mutualExclusionRequestTokenServer) Send(m *Grant) error {
-	return x.ServerStream.SendMsg(m)
-}
-
-func _MutualExclusion_GrantToken_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(Grant)
-	if err := stream.RecvMsg(m); err != nil {
-		return err
-	}
-	return srv.(MutualExclusionServer).GrantToken(m, &mutualExclusionGrantTokenServer{stream})
-}
-
-type MutualExclusion_GrantTokenServer interface {
-	Send(*Release) error
-	grpc.ServerStream
-}
-
-type mutualExclusionGrantTokenServer struct {
-	grpc.ServerStream
-}
-
-func (x *mutualExclusionGrantTokenServer) Send(m *Release) error {
 	return x.ServerStream.SendMsg(m)
 }
 
@@ -640,11 +577,6 @@ var _MutualExclusion_serviceDesc = grpc.ServiceDesc{
 		{
 			StreamName:    "RequestToken",
 			Handler:       _MutualExclusion_RequestToken_Handler,
-			ServerStreams: true,
-		},
-		{
-			StreamName:    "GrantToken",
-			Handler:       _MutualExclusion_GrantToken_Handler,
 			ServerStreams: true,
 		},
 	},
