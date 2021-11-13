@@ -32,27 +32,25 @@ func requestToken(rqst *pb.Request) error {
 	if err != nil {
 		return fmt.Errorf("connection has fauled: %v", err)
 	}
-	wait.Add(1)
-	//recieve requests
-	go func(str pb.MutualExclusion_RequestTokenClient) {
 
-		defer wait.Done()
-		for {
-			_, err := str.Recv()
-			if err != nil {
-				streamerror = fmt.Errorf("error recieving grant token: %v", err)
-				break
-			}
+	//recieve grant token
 
+	for {
+		_, err := stream.Recv()
+		if err != nil {
+			streamerror = fmt.Errorf("error recieving grant token: %v", err)
+			break
+		} else {
+			log.Print("Grant token recieved, accessing critical section")
 			// access critical section
-			client.AccesCritical(context.Background(), &pb.User{})
-
+			client.AccesCritical(context.Background(), rqst.User)
+			log.Print("Finished, sending release token")
 			// then release
-			client.ReleaseToken(context.Background(), &pb.Release{})
-
+			client.ReleaseToken(context.Background(), &pb.Release{User: rqst.User})
+			break
 		}
+	}
 
-	}(stream)
 	return streamerror
 }
 
