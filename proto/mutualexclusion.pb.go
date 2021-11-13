@@ -24,16 +24,16 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type Reply struct {
+type User struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	User *User `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
+	Userid int32 `protobuf:"varint,1,opt,name=userid,proto3" json:"userid,omitempty"`
 }
 
-func (x *Reply) Reset() {
-	*x = Reply{}
+func (x *User) Reset() {
+	*x = User{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_proto_mutualexclusion_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -41,13 +41,13 @@ func (x *Reply) Reset() {
 	}
 }
 
-func (x *Reply) String() string {
+func (x *User) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*Reply) ProtoMessage() {}
+func (*User) ProtoMessage() {}
 
-func (x *Reply) ProtoReflect() protoreflect.Message {
+func (x *User) ProtoReflect() protoreflect.Message {
 	mi := &file_proto_mutualexclusion_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -59,16 +59,16 @@ func (x *Reply) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use Reply.ProtoReflect.Descriptor instead.
-func (*Reply) Descriptor() ([]byte, []int) {
+// Deprecated: Use User.ProtoReflect.Descriptor instead.
+func (*User) Descriptor() ([]byte, []int) {
 	return file_proto_mutualexclusion_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Reply) GetUser() *User {
+func (x *User) GetUserid() int32 {
 	if x != nil {
-		return x.User
+		return x.Userid
 	}
-	return nil
+	return 0
 }
 
 type Empty struct {
@@ -109,18 +109,16 @@ func (*Empty) Descriptor() ([]byte, []int) {
 	return file_proto_mutualexclusion_proto_rawDescGZIP(), []int{1}
 }
 
-type User struct {
+type Request struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Userid int32  `protobuf:"varint,1,opt,name=userid,proto3" json:"userid,omitempty"`
-	Time   int32  `protobuf:"varint,2,opt,name=time,proto3" json:"time,omitempty"`
-	State  string `protobuf:"bytes,3,opt,name=state,proto3" json:"state,omitempty"`
+	User *User `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
 }
 
-func (x *User) Reset() {
-	*x = User{}
+func (x *Request) Reset() {
+	*x = Request{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_proto_mutualexclusion_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -128,13 +126,13 @@ func (x *User) Reset() {
 	}
 }
 
-func (x *User) String() string {
+func (x *Request) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*User) ProtoMessage() {}
+func (*Request) ProtoMessage() {}
 
-func (x *User) ProtoReflect() protoreflect.Message {
+func (x *Request) ProtoReflect() protoreflect.Message {
 	mi := &file_proto_mutualexclusion_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -146,30 +144,110 @@ func (x *User) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use User.ProtoReflect.Descriptor instead.
-func (*User) Descriptor() ([]byte, []int) {
+// Deprecated: Use Request.ProtoReflect.Descriptor instead.
+func (*Request) Descriptor() ([]byte, []int) {
 	return file_proto_mutualexclusion_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *User) GetUserid() int32 {
+func (x *Request) GetUser() *User {
 	if x != nil {
-		return x.Userid
+		return x.User
 	}
-	return 0
+	return nil
 }
 
-func (x *User) GetTime() int32 {
-	if x != nil {
-		return x.Time
-	}
-	return 0
+type Grant struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	User *User `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
 }
 
-func (x *User) GetState() string {
-	if x != nil {
-		return x.State
+func (x *Grant) Reset() {
+	*x = Grant{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_mutualexclusion_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
 	}
-	return ""
+}
+
+func (x *Grant) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Grant) ProtoMessage() {}
+
+func (x *Grant) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_mutualexclusion_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Grant.ProtoReflect.Descriptor instead.
+func (*Grant) Descriptor() ([]byte, []int) {
+	return file_proto_mutualexclusion_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *Grant) GetUser() *User {
+	if x != nil {
+		return x.User
+	}
+	return nil
+}
+
+type Release struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	User *User `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
+}
+
+func (x *Release) Reset() {
+	*x = Release{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_mutualexclusion_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Release) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Release) ProtoMessage() {}
+
+func (x *Release) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_mutualexclusion_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Release.ProtoReflect.Descriptor instead.
+func (*Release) Descriptor() ([]byte, []int) {
+	return file_proto_mutualexclusion_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *Release) GetUser() *User {
+	if x != nil {
+		return x.User
+	}
+	return nil
 }
 
 var File_proto_mutualexclusion_proto protoreflect.FileDescriptor
@@ -177,29 +255,31 @@ var File_proto_mutualexclusion_proto protoreflect.FileDescriptor
 var file_proto_mutualexclusion_proto_rawDesc = []byte{
 	0x0a, 0x1b, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x6d, 0x75, 0x74, 0x75, 0x61, 0x6c, 0x65, 0x78,
 	0x63, 0x6c, 0x75, 0x73, 0x69, 0x6f, 0x6e, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x05, 0x70,
-	0x72, 0x6f, 0x74, 0x6f, 0x22, 0x28, 0x0a, 0x05, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x12, 0x1f, 0x0a,
-	0x04, 0x75, 0x73, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0b, 0x2e, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x52, 0x04, 0x75, 0x73, 0x65, 0x72, 0x22, 0x07,
-	0x0a, 0x05, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x22, 0x48, 0x0a, 0x04, 0x55, 0x73, 0x65, 0x72, 0x12,
-	0x16, 0x0a, 0x06, 0x75, 0x73, 0x65, 0x72, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52,
-	0x06, 0x75, 0x73, 0x65, 0x72, 0x69, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x74, 0x69, 0x6d, 0x65, 0x18,
-	0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x74, 0x69, 0x6d, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x73,
-	0x74, 0x61, 0x74, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x73, 0x74, 0x61, 0x74,
-	0x65, 0x32, 0xd5, 0x01, 0x0a, 0x0f, 0x4d, 0x75, 0x74, 0x75, 0x61, 0x6c, 0x45, 0x78, 0x63, 0x6c,
-	0x75, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x2f, 0x0a, 0x10, 0x42, 0x72, 0x6f, 0x61, 0x64, 0x63, 0x61,
-	0x73, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0b, 0x2e, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x1a, 0x0c, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x52,
-	0x65, 0x70, 0x6c, 0x79, 0x30, 0x01, 0x12, 0x2d, 0x0a, 0x0f, 0x52, 0x65, 0x63, 0x69, 0x65, 0x76,
-	0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x73, 0x12, 0x0b, 0x2e, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x1a, 0x0b, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x55,
-	0x73, 0x65, 0x72, 0x30, 0x01, 0x12, 0x2c, 0x0a, 0x0e, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x54, 0x6f,
-	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0c, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e,
-	0x52, 0x65, 0x70, 0x6c, 0x79, 0x1a, 0x0c, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x45, 0x6d,
-	0x70, 0x74, 0x79, 0x12, 0x34, 0x0a, 0x16, 0x41, 0x63, 0x63, 0x65, 0x73, 0x73, 0x43, 0x72, 0x69,
-	0x74, 0x69, 0x63, 0x61, 0x6c, 0x52, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x12, 0x0c, 0x2e,
-	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x0c, 0x2e, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x42, 0x08, 0x5a, 0x06, 0x2f, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x72, 0x6f, 0x74, 0x6f, 0x22, 0x1e, 0x0a, 0x04, 0x55, 0x73, 0x65, 0x72, 0x12, 0x16, 0x0a, 0x06,
+	0x75, 0x73, 0x65, 0x72, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x75, 0x73,
+	0x65, 0x72, 0x69, 0x64, 0x22, 0x07, 0x0a, 0x05, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x22, 0x2a, 0x0a,
+	0x07, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1f, 0x0a, 0x04, 0x75, 0x73, 0x65, 0x72,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0b, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x55,
+	0x73, 0x65, 0x72, 0x52, 0x04, 0x75, 0x73, 0x65, 0x72, 0x22, 0x28, 0x0a, 0x05, 0x47, 0x72, 0x61,
+	0x6e, 0x74, 0x12, 0x1f, 0x0a, 0x04, 0x75, 0x73, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b,
+	0x32, 0x0b, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x52, 0x04, 0x75,
+	0x73, 0x65, 0x72, 0x22, 0x2a, 0x0a, 0x07, 0x52, 0x65, 0x6c, 0x65, 0x61, 0x73, 0x65, 0x12, 0x1f,
+	0x0a, 0x04, 0x75, 0x73, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0b, 0x2e, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x52, 0x04, 0x75, 0x73, 0x65, 0x72, 0x32,
+	0xc9, 0x01, 0x0a, 0x0f, 0x4d, 0x75, 0x74, 0x75, 0x61, 0x6c, 0x45, 0x78, 0x63, 0x6c, 0x75, 0x73,
+	0x69, 0x6f, 0x6e, 0x12, 0x2e, 0x0a, 0x0c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x54, 0x6f,
+	0x6b, 0x65, 0x6e, 0x12, 0x0e, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x1a, 0x0c, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x47, 0x72, 0x61, 0x6e,
+	0x74, 0x30, 0x01, 0x12, 0x2c, 0x0a, 0x0a, 0x47, 0x72, 0x61, 0x6e, 0x74, 0x54, 0x6f, 0x6b, 0x65,
+	0x6e, 0x12, 0x0c, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x47, 0x72, 0x61, 0x6e, 0x74, 0x1a,
+	0x0e, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x52, 0x65, 0x6c, 0x65, 0x61, 0x73, 0x65, 0x30,
+	0x01, 0x12, 0x2a, 0x0a, 0x0d, 0x41, 0x63, 0x63, 0x65, 0x73, 0x43, 0x72, 0x69, 0x74, 0x69, 0x63,
+	0x61, 0x6c, 0x12, 0x0b, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x1a,
+	0x0c, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x12, 0x2c, 0x0a,
+	0x0c, 0x52, 0x65, 0x6c, 0x65, 0x61, 0x73, 0x65, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x12, 0x0e, 0x2e,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x52, 0x65, 0x6c, 0x65, 0x61, 0x73, 0x65, 0x1a, 0x0c, 0x2e,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x42, 0x08, 0x5a, 0x06, 0x2f,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -214,27 +294,31 @@ func file_proto_mutualexclusion_proto_rawDescGZIP() []byte {
 	return file_proto_mutualexclusion_proto_rawDescData
 }
 
-var file_proto_mutualexclusion_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
+var file_proto_mutualexclusion_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_proto_mutualexclusion_proto_goTypes = []interface{}{
-	(*Reply)(nil), // 0: proto.Reply
-	(*Empty)(nil), // 1: proto.Empty
-	(*User)(nil),  // 2: proto.User
+	(*User)(nil),    // 0: proto.User
+	(*Empty)(nil),   // 1: proto.Empty
+	(*Request)(nil), // 2: proto.Request
+	(*Grant)(nil),   // 3: proto.Grant
+	(*Release)(nil), // 4: proto.Release
 }
 var file_proto_mutualexclusion_proto_depIdxs = []int32{
-	2, // 0: proto.Reply.user:type_name -> proto.User
-	2, // 1: proto.MutualExclusion.BroadcastRequest:input_type -> proto.User
-	2, // 2: proto.MutualExclusion.RecieveRequests:input_type -> proto.User
-	0, // 3: proto.MutualExclusion.ReplyToRequest:input_type -> proto.Reply
-	1, // 4: proto.MutualExclusion.AccessCriticalResource:input_type -> proto.Empty
-	0, // 5: proto.MutualExclusion.BroadcastRequest:output_type -> proto.Reply
-	2, // 6: proto.MutualExclusion.RecieveRequests:output_type -> proto.User
-	1, // 7: proto.MutualExclusion.ReplyToRequest:output_type -> proto.Empty
-	1, // 8: proto.MutualExclusion.AccessCriticalResource:output_type -> proto.Empty
-	5, // [5:9] is the sub-list for method output_type
-	1, // [1:5] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	0, // 0: proto.Request.user:type_name -> proto.User
+	0, // 1: proto.Grant.user:type_name -> proto.User
+	0, // 2: proto.Release.user:type_name -> proto.User
+	2, // 3: proto.MutualExclusion.RequestToken:input_type -> proto.Request
+	3, // 4: proto.MutualExclusion.GrantToken:input_type -> proto.Grant
+	0, // 5: proto.MutualExclusion.AccesCritical:input_type -> proto.User
+	4, // 6: proto.MutualExclusion.ReleaseToken:input_type -> proto.Release
+	3, // 7: proto.MutualExclusion.RequestToken:output_type -> proto.Grant
+	4, // 8: proto.MutualExclusion.GrantToken:output_type -> proto.Release
+	1, // 9: proto.MutualExclusion.AccesCritical:output_type -> proto.Empty
+	1, // 10: proto.MutualExclusion.ReleaseToken:output_type -> proto.Empty
+	7, // [7:11] is the sub-list for method output_type
+	3, // [3:7] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_proto_mutualexclusion_proto_init() }
@@ -244,7 +328,7 @@ func file_proto_mutualexclusion_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_proto_mutualexclusion_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Reply); i {
+			switch v := v.(*User); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -268,7 +352,31 @@ func file_proto_mutualexclusion_proto_init() {
 			}
 		}
 		file_proto_mutualexclusion_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*User); i {
+			switch v := v.(*Request); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_proto_mutualexclusion_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Grant); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_proto_mutualexclusion_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Release); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -286,7 +394,7 @@ func file_proto_mutualexclusion_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_proto_mutualexclusion_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   3,
+			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -312,10 +420,10 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type MutualExclusionClient interface {
-	BroadcastRequest(ctx context.Context, in *User, opts ...grpc.CallOption) (MutualExclusion_BroadcastRequestClient, error)
-	RecieveRequests(ctx context.Context, in *User, opts ...grpc.CallOption) (MutualExclusion_RecieveRequestsClient, error)
-	ReplyToRequest(ctx context.Context, in *Reply, opts ...grpc.CallOption) (*Empty, error)
-	AccessCriticalResource(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error)
+	RequestToken(ctx context.Context, in *Request, opts ...grpc.CallOption) (MutualExclusion_RequestTokenClient, error)
+	GrantToken(ctx context.Context, in *Grant, opts ...grpc.CallOption) (MutualExclusion_GrantTokenClient, error)
+	AccesCritical(ctx context.Context, in *User, opts ...grpc.CallOption) (*Empty, error)
+	ReleaseToken(ctx context.Context, in *Release, opts ...grpc.CallOption) (*Empty, error)
 }
 
 type mutualExclusionClient struct {
@@ -326,12 +434,12 @@ func NewMutualExclusionClient(cc grpc.ClientConnInterface) MutualExclusionClient
 	return &mutualExclusionClient{cc}
 }
 
-func (c *mutualExclusionClient) BroadcastRequest(ctx context.Context, in *User, opts ...grpc.CallOption) (MutualExclusion_BroadcastRequestClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_MutualExclusion_serviceDesc.Streams[0], "/proto.MutualExclusion/BroadcastRequest", opts...)
+func (c *mutualExclusionClient) RequestToken(ctx context.Context, in *Request, opts ...grpc.CallOption) (MutualExclusion_RequestTokenClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_MutualExclusion_serviceDesc.Streams[0], "/proto.MutualExclusion/RequestToken", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &mutualExclusionBroadcastRequestClient{stream}
+	x := &mutualExclusionRequestTokenClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -341,29 +449,29 @@ func (c *mutualExclusionClient) BroadcastRequest(ctx context.Context, in *User, 
 	return x, nil
 }
 
-type MutualExclusion_BroadcastRequestClient interface {
-	Recv() (*Reply, error)
+type MutualExclusion_RequestTokenClient interface {
+	Recv() (*Grant, error)
 	grpc.ClientStream
 }
 
-type mutualExclusionBroadcastRequestClient struct {
+type mutualExclusionRequestTokenClient struct {
 	grpc.ClientStream
 }
 
-func (x *mutualExclusionBroadcastRequestClient) Recv() (*Reply, error) {
-	m := new(Reply)
+func (x *mutualExclusionRequestTokenClient) Recv() (*Grant, error) {
+	m := new(Grant)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
 	return m, nil
 }
 
-func (c *mutualExclusionClient) RecieveRequests(ctx context.Context, in *User, opts ...grpc.CallOption) (MutualExclusion_RecieveRequestsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_MutualExclusion_serviceDesc.Streams[1], "/proto.MutualExclusion/RecieveRequests", opts...)
+func (c *mutualExclusionClient) GrantToken(ctx context.Context, in *Grant, opts ...grpc.CallOption) (MutualExclusion_GrantTokenClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_MutualExclusion_serviceDesc.Streams[1], "/proto.MutualExclusion/GrantToken", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &mutualExclusionRecieveRequestsClient{stream}
+	x := &mutualExclusionGrantTokenClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -373,35 +481,35 @@ func (c *mutualExclusionClient) RecieveRequests(ctx context.Context, in *User, o
 	return x, nil
 }
 
-type MutualExclusion_RecieveRequestsClient interface {
-	Recv() (*User, error)
+type MutualExclusion_GrantTokenClient interface {
+	Recv() (*Release, error)
 	grpc.ClientStream
 }
 
-type mutualExclusionRecieveRequestsClient struct {
+type mutualExclusionGrantTokenClient struct {
 	grpc.ClientStream
 }
 
-func (x *mutualExclusionRecieveRequestsClient) Recv() (*User, error) {
-	m := new(User)
+func (x *mutualExclusionGrantTokenClient) Recv() (*Release, error) {
+	m := new(Release)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
 	return m, nil
 }
 
-func (c *mutualExclusionClient) ReplyToRequest(ctx context.Context, in *Reply, opts ...grpc.CallOption) (*Empty, error) {
+func (c *mutualExclusionClient) AccesCritical(ctx context.Context, in *User, opts ...grpc.CallOption) (*Empty, error) {
 	out := new(Empty)
-	err := c.cc.Invoke(ctx, "/proto.MutualExclusion/ReplyToRequest", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/proto.MutualExclusion/AccesCritical", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *mutualExclusionClient) AccessCriticalResource(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error) {
+func (c *mutualExclusionClient) ReleaseToken(ctx context.Context, in *Release, opts ...grpc.CallOption) (*Empty, error) {
 	out := new(Empty)
-	err := c.cc.Invoke(ctx, "/proto.MutualExclusion/AccessCriticalResource", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/proto.MutualExclusion/ReleaseToken", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -410,107 +518,107 @@ func (c *mutualExclusionClient) AccessCriticalResource(ctx context.Context, in *
 
 // MutualExclusionServer is the server API for MutualExclusion service.
 type MutualExclusionServer interface {
-	BroadcastRequest(*User, MutualExclusion_BroadcastRequestServer) error
-	RecieveRequests(*User, MutualExclusion_RecieveRequestsServer) error
-	ReplyToRequest(context.Context, *Reply) (*Empty, error)
-	AccessCriticalResource(context.Context, *Empty) (*Empty, error)
+	RequestToken(*Request, MutualExclusion_RequestTokenServer) error
+	GrantToken(*Grant, MutualExclusion_GrantTokenServer) error
+	AccesCritical(context.Context, *User) (*Empty, error)
+	ReleaseToken(context.Context, *Release) (*Empty, error)
 }
 
 // UnimplementedMutualExclusionServer can be embedded to have forward compatible implementations.
 type UnimplementedMutualExclusionServer struct {
 }
 
-func (*UnimplementedMutualExclusionServer) BroadcastRequest(*User, MutualExclusion_BroadcastRequestServer) error {
-	return status.Errorf(codes.Unimplemented, "method BroadcastRequest not implemented")
+func (*UnimplementedMutualExclusionServer) RequestToken(*Request, MutualExclusion_RequestTokenServer) error {
+	return status.Errorf(codes.Unimplemented, "method RequestToken not implemented")
 }
-func (*UnimplementedMutualExclusionServer) RecieveRequests(*User, MutualExclusion_RecieveRequestsServer) error {
-	return status.Errorf(codes.Unimplemented, "method RecieveRequests not implemented")
+func (*UnimplementedMutualExclusionServer) GrantToken(*Grant, MutualExclusion_GrantTokenServer) error {
+	return status.Errorf(codes.Unimplemented, "method GrantToken not implemented")
 }
-func (*UnimplementedMutualExclusionServer) ReplyToRequest(context.Context, *Reply) (*Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ReplyToRequest not implemented")
+func (*UnimplementedMutualExclusionServer) AccesCritical(context.Context, *User) (*Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AccesCritical not implemented")
 }
-func (*UnimplementedMutualExclusionServer) AccessCriticalResource(context.Context, *Empty) (*Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AccessCriticalResource not implemented")
+func (*UnimplementedMutualExclusionServer) ReleaseToken(context.Context, *Release) (*Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ReleaseToken not implemented")
 }
 
 func RegisterMutualExclusionServer(s *grpc.Server, srv MutualExclusionServer) {
 	s.RegisterService(&_MutualExclusion_serviceDesc, srv)
 }
 
-func _MutualExclusion_BroadcastRequest_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(User)
+func _MutualExclusion_RequestToken_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(Request)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(MutualExclusionServer).BroadcastRequest(m, &mutualExclusionBroadcastRequestServer{stream})
+	return srv.(MutualExclusionServer).RequestToken(m, &mutualExclusionRequestTokenServer{stream})
 }
 
-type MutualExclusion_BroadcastRequestServer interface {
-	Send(*Reply) error
+type MutualExclusion_RequestTokenServer interface {
+	Send(*Grant) error
 	grpc.ServerStream
 }
 
-type mutualExclusionBroadcastRequestServer struct {
+type mutualExclusionRequestTokenServer struct {
 	grpc.ServerStream
 }
 
-func (x *mutualExclusionBroadcastRequestServer) Send(m *Reply) error {
+func (x *mutualExclusionRequestTokenServer) Send(m *Grant) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func _MutualExclusion_RecieveRequests_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(User)
+func _MutualExclusion_GrantToken_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(Grant)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(MutualExclusionServer).RecieveRequests(m, &mutualExclusionRecieveRequestsServer{stream})
+	return srv.(MutualExclusionServer).GrantToken(m, &mutualExclusionGrantTokenServer{stream})
 }
 
-type MutualExclusion_RecieveRequestsServer interface {
-	Send(*User) error
+type MutualExclusion_GrantTokenServer interface {
+	Send(*Release) error
 	grpc.ServerStream
 }
 
-type mutualExclusionRecieveRequestsServer struct {
+type mutualExclusionGrantTokenServer struct {
 	grpc.ServerStream
 }
 
-func (x *mutualExclusionRecieveRequestsServer) Send(m *User) error {
+func (x *mutualExclusionGrantTokenServer) Send(m *Release) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func _MutualExclusion_ReplyToRequest_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Reply)
+func _MutualExclusion_AccesCritical_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(User)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MutualExclusionServer).ReplyToRequest(ctx, in)
+		return srv.(MutualExclusionServer).AccesCritical(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/proto.MutualExclusion/ReplyToRequest",
+		FullMethod: "/proto.MutualExclusion/AccesCritical",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MutualExclusionServer).ReplyToRequest(ctx, req.(*Reply))
+		return srv.(MutualExclusionServer).AccesCritical(ctx, req.(*User))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _MutualExclusion_AccessCriticalResource_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Empty)
+func _MutualExclusion_ReleaseToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Release)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MutualExclusionServer).AccessCriticalResource(ctx, in)
+		return srv.(MutualExclusionServer).ReleaseToken(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/proto.MutualExclusion/AccessCriticalResource",
+		FullMethod: "/proto.MutualExclusion/ReleaseToken",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MutualExclusionServer).AccessCriticalResource(ctx, req.(*Empty))
+		return srv.(MutualExclusionServer).ReleaseToken(ctx, req.(*Release))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -520,23 +628,23 @@ var _MutualExclusion_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*MutualExclusionServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "ReplyToRequest",
-			Handler:    _MutualExclusion_ReplyToRequest_Handler,
+			MethodName: "AccesCritical",
+			Handler:    _MutualExclusion_AccesCritical_Handler,
 		},
 		{
-			MethodName: "AccessCriticalResource",
-			Handler:    _MutualExclusion_AccessCriticalResource_Handler,
+			MethodName: "ReleaseToken",
+			Handler:    _MutualExclusion_ReleaseToken_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
 		{
-			StreamName:    "BroadcastRequest",
-			Handler:       _MutualExclusion_BroadcastRequest_Handler,
+			StreamName:    "RequestToken",
+			Handler:       _MutualExclusion_RequestToken_Handler,
 			ServerStreams: true,
 		},
 		{
-			StreamName:    "RecieveRequests",
-			Handler:       _MutualExclusion_RecieveRequests_Handler,
+			StreamName:    "GrantToken",
+			Handler:       _MutualExclusion_GrantToken_Handler,
 			ServerStreams: true,
 		},
 	},

@@ -2,61 +2,54 @@ package main
 
 import (
 	"context"
+	"flag"
 	"fmt"
+	"log"
 	"sync"
+	"time"
 
 	pb "github.com/CasperAntonPoulsen/DisysExercise2/proto"
+	"google.golang.org/grpc"
 )
 
 const (
 	address = "localhost:8080"
 )
 
-var client pb.MutualExclusionClient
-var wait *sync.WaitGroup
-var mutex sync.Mutex
+var (
+	client pb.MutualExclusionClient
+	wait   *sync.WaitGroup
+	id     = flag.Int("id", 1, "id of the node")
+)
 
 func init() {
 	wait = &sync.WaitGroup{}
 }
 
-type User struct {
-	id    int32
-	time  int32
-	state string
-}
-
-func evaluaterequest(rqst *pb.User, user *pb.User) bool {
-	if user.State == "HELD" || user.State == "WANTED" && (user.Time < rqst.Time || user.Userid < rqst.Userid) {
-		return false
-	}
-	return true
-}
-
-func reply(rply *pb.Reply) {
-
-}
-
-func recieverequests(user *pb.User) error {
+func requestToken(rqst *pb.Request) error {
 	var streamerror error
-	stream, err := client.RecieveRequests(context.Background(), user)
+	stream, err := client.RequestToken(context.Background(), rqst)
 	if err != nil {
 		return fmt.Errorf("connection has fauled: %v", err)
 	}
 	wait.Add(1)
 	//recieve requests
-	go func(str pb.MutualExclusion_RecieveRequestsClient) {
+	go func(str pb.MutualExclusion_RequestTokenClient) {
+
 		defer wait.Done()
+		for {
+			_, err := str.Recv()
+			if err != nil {
+				streamerror = fmt.Errorf("error recieving grant token: %v", err)
+				break
+			}
 
-		request, err := str.Recv()
-		if err != nil {
-			streamerror = fmt.Errorf("error recieving request: %v", err)
-		}
+			// access critical section
+			client.AccesCritical(context.Background(), &pb.User{})
 
-		if evaluaterequest(request, user) {
-			reply(&pb.Reply{&pb.User{
-				User: request,
-			}})
+			// then release
+			client.ReleaseToken(context.Background(), &pb.Release{})
+
 		}
 
 	}(stream)
@@ -64,5 +57,21 @@ func recieverequests(user *pb.User) error {
 }
 
 func main() {
+	flag.Parse()
+
+	conn, err := grpc.Dial(address, grpc.WithInsecure())
+
+	if err != nil {
+		log.Fatalf("could not connect to service : %v", err)
+	}
+
+	client = pb.NewMutualExclusionClient(conn)
+	user := &pb.User{Userid: int32(*id)}
+
+	for {
+		time.Sleep(4 * time.Second)
+		requestToken(&pb.Request{User: user})
+
+	}
 
 }

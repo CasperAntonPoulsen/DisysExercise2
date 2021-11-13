@@ -4,21 +4,27 @@ option go_package = "/proto";
 
 package proto;
 
-message Reply {
-    User user = 1;
+message User {
+    int32 userid = 1;
 }
 
 message Empty {}
 
-message User {
-    int32 userid = 1;
-    int32 time = 2;
-    string state = 3;
+message Request {
+    User user = 1;
+}
+
+message Grant {
+    User user = 1;
+}
+
+message Release {
+    User user = 1;
 }
 
 service MutualExclusion {
-    rpc BroadcastRequest(User) returns (stream Reply);
-    rpc RecieveRequests(User) returns (stream User);
-    rpc ReplyToRequest(Reply) returns (Empty);
-    rpc AccessCriticalResource(Empty) returns (Empty);
+    rpc RequestToken(Request) returns (stream Grant); 
+    rpc GrantToken(stream Grant) returns (stream Release);
+    rpc AccesCritical(User) returns (Empty);
+    rpc ReleaseToken(Release) returns (Empty);
 }
