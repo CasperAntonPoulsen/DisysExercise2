@@ -36,7 +36,8 @@ func (s *Server) RequestToken(rqst *pb.Request, stream pb.MutualExclusion_Reques
 
 func (s *Server) ReleaseToken(ctx context.Context, release *pb.Release) (*pb.Empty, error) {
 	log.Printf("Recieved release token from: %v", release.User.Userid)
-	s.Release <- &pb.Release{User: release.User}
+
+	go func() { s.Release <- &pb.Release{User: release.User} }()
 
 	return &pb.Empty{}, nil
 }
