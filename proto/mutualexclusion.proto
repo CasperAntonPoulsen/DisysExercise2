@@ -3,3 +3,27 @@ syntax = "proto3";
 option go_package = "/proto";
 
 package proto;
+
+message User {
+    int32 userid = 1;
+}
+
+message Empty {}
+
+message Request {
+    User user = 1;
+}
+
+message Grant {
+    User user = 1;
+}
+
+message Release {
+    User user = 1;
+}
+
+service MutualExclusion {
+    rpc RequestToken(Request) returns (stream Grant); 
+    rpc AccesCritical(User) returns (Empty);
+    rpc ReleaseToken(Release) returns (Empty);
+}
